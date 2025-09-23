@@ -1,0 +1,42 @@
+# Network Configuration
+# Use your team's assigned DIDLab endpoint and chain ID
+# Example for Team 08: https://hh-08.didlab.org
+# For local testing: http://127.0.0.1:8545
+RPC_URL=http://127.0.0.1:8545
+
+# Chain ID must match your network
+# DIDLab Team 08: 31344
+# Local Hardhat: 31337
+CHAIN_ID=31337
+
+# Private key from DIDLab faucet or Hardhat test account
+# NEVER use a real wallet private key
+# Default is Hardhat account #0 (for local testing only)
+PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+# Token Configuration
+# Human-readable token name
+TOKEN_NAME=CampusCredit
+
+# Token ticker symbol (3-5 characters)
+TOKEN_SYMBOL=CAMP
+
+# Maximum token supply in human units (will convert to 18 decimals)
+TOKEN_CAP=2000000
+
+# Initial mint to deployer in human units (will convert to 18 decimals)
+TOKEN_INITIAL=1000000
+
+# Deployed contract address - FILL AFTER DEPLOYMENT
+# This will be provided by the deploy script
+TOKEN_ADDRESS=
+
+# Optional Configuration
+# Additional recipient address for transfer testing
+# Leave empty to use self-transfers
+RECIPIENT=
+
+# Team Information (for documentation)
+# TEAM_NUMBER=08
+# TEAM_RPC=https://hh-08.didlab.org
+# TEAM_CHAIN_ID=31344

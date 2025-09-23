@@ -1,0 +1,221 @@
+TERMINAL 2:
+
+osh@BlockchainVM:~/didlab-activity3$ npm run deploy
+
+> didlab-activity3@1.0.0 deploy
+> hardhat run scripts/deploy.ts
+
+Compiling your Solidity contracts...
+
+Nothing to compile
+
+Starting CampusCredit deployment...
+Token Name: CampusCredit
+Token Symbol: CAMP
+Token Cap: 2000000 tokens
+Initial Mint: 1000000 tokens
+Network: http://127.0.0.1:8545
+Chain ID: 31337
+
+Deployer Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Cap (wei): 2000000000000000000000000
+Initial Mint (wei): 1000000000000000000000000
+
+Deploying contract...
+Deploy Transaction Hash: 0xbc65b9127ba7f631d8b70be5809f2d2113dca288bd52c6079519bb00f47a0a5a
+Waiting for confirmation...
+
+Deployment Successful!
+==================================================
+Contract Address: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+Block Number: 1
+Gas Used: 1996392
+Effective Gas Price: 2875000000 wei
+Total Deployment Cost: 5739627000000000 wei
+
+ Next Steps:
+Add this to your .env file:
+TOKEN_ADDRESS=0x5fbdb2315678afecb367f032d93f642f64180aa3
+
+ You can now run interaction scripts:
+npm run xfer     # Test transfers and approvals
+npm run airdrop  # Test batch airdrop
+npm run logs     # Query contract events
+
+josh@BlockchainVM:~/didlab-activity3$ npm run xfer
+
+> didlab-activity3@1.0.0 xfer
+> hardhat run scripts/transfer-approve.ts
+
+Compiling your Solidity contracts...
+
+Nothing to compile
+
+Starting Transfer and Approve Tests
+Contract Address: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+Deployer Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Recipient Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+Initial Balances:
+  My Balance: 1000000 CAMP
+  Recipient Balance: 1000000 CAMP
+
+Executing transfer of 100 CAMP tokens...
+Transfer Transaction Hash: 0x5c2f6ef7382a7d61be64816cb95e13db140f8f32d1f6086ec515816834a6730f
+Transfer Gas Used: 29881
+
+Executing approval of 50 CAMP tokens...
+Approve Transaction Hash: 0xaa0d5186fa689f8315f3d3672a093c7927c30576aaa14df80248e7db9898fe3d
+Approve Gas Used: 46987
+
+Allowance Set: 50 CAMP
+
+Final Balances:
+  My Balance: 1000000 CAMP
+  Recipient Balance: 1000000 CAMP
+
+Transaction Summary:
+  Total Gas Used: 76868
+  Average Gas Price: 2231517784 wei
+  Total Cost: 171532309020512 wei
+josh@BlockchainVM:~/didlab-activity3$ npm run airdrop
+
+> didlab-activity3@1.0.0 airdrop
+> hardhat run scripts/airdrop.ts
+
+Compiling your Solidity contracts...
+
+Nothing to compile
+
+Starting Batch Airdrop Gas Comparison Test
+Contract Address: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+
+Test Configuration:
+  Recipients: 3
+  Amount per recipient: 10 CAMP
+  Total amount: 30 CAMP
+
+=== Batch Airdrop Test ===
+Batch Airdrop Transaction Hash: 0x59fb5c71510e9002746b0a30feee67eba35fdec95c0fc0e277055e7296c5a6fb
+Batch Airdrop Results:
+  Gas Used: 96162
+  Gas Price: 2597764228 wei
+  Transaction Fee: 249806203692936 wei
+
+=== Individual Transfers Test ===
+  Transfer 1: 29869 gas
+  Transfer 2: 37469 gas
+  Transfer 3: 37457 gas
+
+Individual Transfers Summary:
+  Total Gas Used: 104795
+  Total Transaction Fee: 257419093966046 wei
+
+=== Gas Efficiency Comparison ===
+Gas Savings:
+  Batch Gas: 96162
+  Individual Total Gas: 104795
+  Gas Saved: 8633
+  Gas Efficiency: 8.24% savings
+
+Fee Savings:
+  Batch Fee: 249806203692936 wei
+  Individual Total Fee: 257419093966046 wei
+  Fee Saved: 7612890273110 wei
+  Fee Efficiency: 2.96% savings
+
+=== Why Batch Operations Are Gas-Efficient ===
+1. Single transaction base cost vs multiple transaction costs
+2. Reduced calldata overhead (shared function selector)
+3. Optimized loop execution with unchecked arithmetic
+4. Pre-validation prevents failed transaction gas waste
+5. Custom errors reduce gas cost vs require strings
+josh@BlockchainVM:~/didlab-activity3$ npm run logs
+
+> didlab-activity3@1.0.0 logs
+> hardhat run scripts/logs-query.ts
+
+Compiling your Solidity contracts...
+
+Nothing to compile
+
+Starting Contract Event Query
+Contract Address: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+Latest Block Number: 7
+
+Querying events from block 0 to latest...
+Found 12 events:
+
+[Block 1] RoleGranted (tx: 0xbc65b912...)
+  Role: 0x0000000000000000000000000000000000000000000000000000000000000000
+  Account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Granted by: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+[Block 1] RoleGranted (tx: 0xbc65b912...)
+  Role: 0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6
+  Account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Granted by: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+[Block 1] RoleGranted (tx: 0xbc65b912...)
+  Role: 0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a
+  Account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Granted by: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+[Block 1] Transfer (tx: 0xbc65b912...)
+  From: 0x0000000000000000000000000000000000000000
+  To: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Amount: 1000000 CAMP
+
+[Block 2] Transfer (tx: 0x5c2f6ef7...)
+  From: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  To: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Amount: 100 CAMP
+
+[Block 3] Approval (tx: 0xaa0d5186...)
+  Owner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Spender: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Amount: 50 CAMP
+
+[Block 4] Transfer (tx: 0x59fb5c71...)
+  From: 0x0000000000000000000000000000000000000000
+  To: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Amount: 10 CAMP
+
+[Block 4] Transfer (tx: 0x59fb5c71...)
+  From: 0x0000000000000000000000000000000000000000
+  To: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+  Amount: 10 CAMP
+
+[Block 4] Transfer (tx: 0x59fb5c71...)
+  From: 0x0000000000000000000000000000000000000000
+  To: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+  Amount: 10 CAMP
+
+[Block 5] Transfer (tx: 0xc8a713ca...)
+  From: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  To: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Amount: 10 CAMP
+
+[Block 6] Transfer (tx: 0xa2a2307e...)
+  From: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  To: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+  Amount: 10 CAMP
+
+[Block 7] Transfer (tx: 0x0fe2d805...)
+  From: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  To: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+  Amount: 10 CAMP
+
+Event Summary:
+  Total Events: 12
+  Successfully Decoded: 12
+  RoleGranted: 3
+  Transfer: 8
+  Approval: 1
+
+Current Contract State:
+  Total Supply: 1000030 CAMP
+  Token Cap: 2000000 CAMP
+  Paused: No
+  Supply Utilization: 50.00%
+
