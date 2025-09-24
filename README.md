@@ -121,7 +121,7 @@ This script displays:
 ## Project Structure
 
 ```
-didlab-activity3/
+didlab-assignment3/
 ├── contracts/
 │   └── CampusCredit.sol
 ├── scripts/
