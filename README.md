@@ -16,7 +16,7 @@ This project was originally intended for deployment on DIDLab Team 08:
 - **Intended RPC URL**: `https://hh-08.didlab.org`
 - **Intended Chain ID**: `31344`
 
-Due to connectivity issues/errors with the DIDLab network on my laptop, I was forced to complete all development and testing via on a local Hardhat network.
+Due to connectivity issues/errors with the DIDLab network on my laptop, I was forced to complete all development and testing via on a local Hardhat network. The same connectivity issues were occuring with meta mask on my machine as well.
 
 ## Environment Setup
 
